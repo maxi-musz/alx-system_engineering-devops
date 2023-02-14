@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Highlander
+# This script displays 'To infinity and beyond' indefinitely
+# Requirement: In between each iteration of the loop, add a sleep 2
 
-# print I am invincible!!! when receiving a SIGTERM signal
-trap "echo I am invincible!!!" SIGTERM
-
-while true; do
-  echo "To infinity and beyond"
-  sleep 2
-done;
+trap 'echo "I am invincible!!!"' SIGTERM
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
