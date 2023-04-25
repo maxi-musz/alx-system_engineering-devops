@@ -15,16 +15,16 @@ if __name__ == '__main__':
             id = int(sys.argv[1])
             emp_req = requests.get('{}/users/{}'.format(REST_API, id)).json()
             task_req = requests.get('{}/todos'.format(REST_API)).json()
-            emp_name = emp_req.get('name')
-            tasks = list(filter(lambda x: x.get('userId') == id, task_req))
-            completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
+            EMPLOYEE_NAME = emp_req.get('name')
+            TOTAL_NUMBER_OF_TASKS = list(filter(lambda x: x.get('userId') == id, task_req))
+            NUMBER_OF_DONE_TASKS = list(filter(lambda x: x.get('completed'), tasks))
             print(
                 'Employee {} is done with tasks({}/{}):'.format(
-                    emp_name,
-                    len(completed_tasks),
-                    len(tasks)
+                    EMPLOYEE_NAME,
+                    len(NUMBER_OF_DONE_TASKS),
+                    len(TOTAL_NUMBER_OF_TASKS)
                 )
             )
-            if len(completed_tasks) > 0:
-                for task in completed_tasks:
-                    print('\t {}'.format(task.get('title')))
+            if len(NUMBER_OF_DONE_TASKS) > 0:
+                for TOTAL_NUMBER_OF_TASKS in NUMBER_OF_DONE_TASKS:
+                    print('\t {}'.format(TOTAL_NUMBER_OF_TASKS.get('title')))
